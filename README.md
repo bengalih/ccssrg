@@ -8,3 +8,7 @@ Includes unsubmitted assignments, recent graded, and comments all color coded fo
 
 An online version (may not be using current codebase) is available at:
 https://ccssrg.pythonanywhere.com/
+
+Usage:
+
+- Change PROD_URL in ccssrg.py to appropriate Canvas URL
