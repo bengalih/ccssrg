@@ -1,0 +1,356 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        h1, h2, h3 {
+            color: #c84114;
+            text-align: center;
+        }
+
+        .content { 
+            max-width: 960px; 
+            margin: auto;
+            }
+
+        table { 
+            border: 1px solid black; 
+            border-collapse: collapse; 
+            margin: auto;  
+        }
+
+        th { 
+            color: white;
+            background-color: #6e2b70;
+            padding: 0px;
+            min-width: 100;
+            font-size: unset;
+            }
+
+        th.course { 
+            color: white;
+            background-color: #6e2b70; 
+            font-size: x-large; 
+            padding: 10px;
+        }
+        
+        th.course a { 
+            color: white; 
+            text-decoration: inherit;
+        }
+        
+        tr.submission { 
+            display: none; 
+        }
+        
+        tr.show_in_report {
+            display: table-row; 
+        }
+        
+        tr.submission.graded { 
+            display: table-row;
+        }
+
+        .has_no_submissions { 
+            background-color: lightgray; 
+        }
+
+        td { 
+            max-width: 800px; 
+            border: 1px solid #6e2b70;
+            padding: 10px;
+            text-align: center;
+            /* prevent text resizing on mobile */ 
+			max-height: 999999px;
+        }
+
+        .unsubmitted {
+            color: white;
+            background-color: orange; 
+            font-weight:bold; 
+        }
+
+        .submitted { 
+            color: white; 
+            background-color: lightgreen; 
+            font-weight:bold;
+        }
+
+        .graded, .comments{ 
+            color: black; 
+            background-color: white; 
+            font-weight:bold; 
+        }
+
+        .graded_1 { 
+            color: white; 
+            background-color: forestgreen; 
+            font-weight:bold; 
+        }
+
+        .is_late { 
+            color: white;
+            background-color: red;
+            font-weight:bold;
+        }
+
+        .teacher_comment { 
+            color: orangered;
+            text-align: left;
+        }
+
+        .student_comment { 
+            text-align: left;
+        }
+
+        .submission_types {
+            color: #c84114;
+            display: block;
+            text-align: center;
+            font-weight: bold;
+        }
+        span.bold {
+            font-weight: bold;
+        }
+
+        span.italic {
+            font-style: italic;
+        }
+
+        .recent_comment { 
+            background-color: yellow;
+        }
+
+        table.key { 
+            max-width: 1024px;
+            margin: auto;
+            font-size: small;
+        }
+
+        tr.key { 
+            max-height: 10px;
+        }
+        
+        th.key_title {
+            height: 30;
+            min-width: 100px;
+            background-color: #6e2b70;
+            font-size: x-large;
+            border-style: solid;
+            border-color: #c84114;
+        }
+
+        th.key {
+            height: 80;
+            width: 150;
+        }
+
+        td.key {
+            height: 100;
+            width: 100;
+            text-align: center;
+        }
+
+        td.report_details {
+            text-align: left;
+        }
+
+        /* Tooltip Stuff */
+        .hide {
+            display: none;
+        }
+
+        .tooltip:hover .ttt_assignment, .tooltip:hover .ttt_status, .tooltip:hover .ttt_grade {
+            visibility: visible;
+        }
+
+
+        .tooltip {
+            position: relative;
+            /*
+            display: inline-block;
+            */
+        }
+
+        .tooltip .ttt_assignment {
+            visibility: hidden;
+            width: 175px;
+            background-color: white;
+            color: #c84114;
+            text-align: center;
+            padding: 10px;
+            border-radius: 200px;
+            font-weight: bold;
+            box-sizing:border-box;
+            box-shadow: 0px 0px 10px #c84114;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            left:	-30%;
+        }
+
+        .tooltip .ttt_status {
+            visibility: hidden;
+            width: 150px;
+            background-color: white;
+            color: #c84114;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 200px;
+            font-weight: bold;
+            box-sizing:border-box;
+            box-shadow: 0px 0px 10px #c84114;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            left: -13%;
+        }
+
+        .tooltip .ttt_grade {
+            visibility: hidden;
+            width: 150px;
+            background-color: white;
+            color: #c84114;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 200px;
+            font-weight: bold;
+            box-sizing:border-box;
+            box-shadow: 0px 0px 10px #c84114;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            right: -45%;
+        }
+
+        /* [Object] Modal
+        *  https://codepen.io/Idered/pen/vytkH
+        * =============================== */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: initial;
+            background: rgba(0,0,0, .9);
+            transition: opacity .25s ease;
+            z-index: 1;
+        }
+
+        .modal__bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        .modal-state {
+            display: none;
+        }
+
+        .modal-state:checked + .modal {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-state:checked + .modal .modal__inner {
+            top: 0;
+        }
+
+        .modal__inner {
+            position: absolute;
+            top: -20%;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            margin: auto;
+            overflow: auto;
+            background: #fff;
+            border-radius: 50px;
+            padding: 1em 2em;
+            height: 90%;
+        }
+
+        .modal__close {
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            width: 1.1em;
+            height: 1.1em;
+            cursor: pointer;
+        }
+
+        .modal__close:after,
+        .modal__close:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 1.5em;
+            background: #ccc;
+            display: block;
+            transform: rotate(45deg);
+            left: -20%;
+            margin: -3px 0 0 -1px;
+            top: 20%;
+        }
+
+        .modal__close:hover:after,
+        .modal__close:hover:before {
+            background: #aaa;
+        }
+
+        .modal__close:before {
+            transform: rotate(-45deg);
+        }
+
+        @media screen and (max-width: 768px) {
+        .modal__inner {
+            width: 90%;
+            height: 90%;
+            box-sizing: border-box;
+        }
+        }
+
+        .btn {
+            cursor: pointer;
+            background: powderblue;
+            display: inline-block;
+            padding: 2px;
+            color: #000000;
+            border-radius: 2px;
+            font-size: x-small;
+            margin: 3 0 0 0;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background: skyblue;
+        }
+
+        .btn:active {
+            background: deepskyblue;
+            box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
+        }
+
+        p img {
+            max-width: 300px;
+            height: auto;
+            float: left;
+            margin: 0 1em 1em 0;
+        }
+
+        .report_metrics {
+            font-size: xx-small;
+            text-align: right;
+            font-style: italic;
+        }
+    </style>
+</head>
