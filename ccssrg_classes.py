@@ -6,5 +6,5 @@ class UserPrefs:
         self.canvas_url = "https://tulsaps.instructure.com"
         self.name = None
         self.token = None
-        self.selected_courses = []
+        self.selected_courses = {}
         self.file = None

@@ -1,39 +1,40 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" type="image/png" href="https://canvas.instructure.com/favicon.ico"/>
     <style>
-        body {
-            background-color: white;
-        }
 
+        body {
+            color: #2D3B45;
+        }
+        
         h1, h2, h3 {
             color: #c84114;
             text-align: center;
         }
 
-        .content { 
-            max-width: 960px; 
-            margin: auto;
-            }
-
-        table { 
-            border: 1px solid black; 
-            border-collapse: collapse; 
-            margin: auto;  
+        ul { 
+            text-align: left;
         }
 
-        th { 
-            color: white;
-            background-color: #6e2b70;
-            padding: 0px;
-            min-width: 100;
-            font-size: unset;
-            }
+        a {
+            text-decoration: none;
+        }
 
-        th.course { 
-            color: white;
-            background-color: #6e2b70; 
-            font-size: x-large; 
-            padding: 10px;
+        table { 
+            table-layout: fixed;
+            width: 100%;
+            border-spacing: 0;
+            border: 10px solid #6e2b70;
+            border-radius: 31px;
+        }
+        
+        td { 
+            border: 1px solid #6e2b70;
+            max-height: 999999px; /* prevent text resizing on mobile */ 
+            overflow-wrap: break-word;
+            padding: 8px 4px 8px 4px;
+            font-size: 14px;
+            text-align: center;
         }
         
         th.course a { 
@@ -53,64 +54,50 @@
             display: table-row;
         }
 
-        .has_no_submissions { 
-            background-color: lightgray; 
+        td a:link {
+            color: #2D3B45
         }
 
-        td { 
-            max-width: 800px; 
-            border: 1px solid #6e2b70;
-            padding: 10px;
-            text-align: center;
-            /* prevent text resizing on mobile */ 
-			max-height: 999999px;
+        td a:visited {
+            color: #2D3B45
         }
 
-        .unsubmitted {
-            color: white;
-            background-color: orange; 
-            font-weight:bold; 
-        }
-
-        .submitted { 
-            color: white; 
-            background-color: lightgreen; 
-            font-weight:bold;
-        }
-
-        .graded, .comments{ 
-            color: black; 
-            background-color: white; 
-            font-weight:bold; 
-        }
-
-        .graded_1 { 
-            color: white; 
-            background-color: forestgreen; 
-            font-weight:bold; 
-        }
-
-        .is_late { 
-            color: white;
-            background-color: red;
-            font-weight:bold;
-        }
-
-        .teacher_comment { 
-            color: orangered;
-            text-align: left;
-        }
-
-        .student_comment { 
-            text-align: left;
-        }
-
-        .submission_types {
+        td a:hover {
             color: #c84114;
-            display: block;
-            text-align: center;
-            font-weight: bold;
+            font-weight: 1000;
         }
+
+        td a.course:link {
+            color: #6e2b70
+        }
+
+        td a.course:visited {
+            color: green
+        }
+
+        td a.course:hover {
+            font-weight: 1000;
+            color: #c84114;
+        }
+
+        th a,
+        td.unsubmitted a,
+        td.submitted a,
+        td.graded_recent a,
+        td.is_late a {
+            color:white
+        }
+
+        th a:hover,
+        td.unsubmitted a:hover,
+        td.submitted a:hover,
+        td.graded_recent a:hover,
+        td.is_late a:hover {
+            color: skyblue;
+            font-weight: 1000;
+            text-shadow: 2px 2px #2D3B45;
+        }
+
         span.bold {
             font-weight: bold;
         }
@@ -119,115 +106,203 @@
             font-style: italic;
         }
 
+        span.small_font{
+            font-size: 10px;
+        }
+
+        span.xx_small_font{
+            font-size: xx-small;
+        }
+
+        span.submission_types {
+            color: #c84114;
+            display: block;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        div.report_link{
+            text-align: center;
+        }
+        
+        div.inbox{
+            text-align: right;
+        }
+        
+        div.content { 
+            background-color: white;
+            font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+            margin: auto;            
+            max-width: 960px; 
+        }
+
+        div.report_metrics {
+            font-size: xx-small;
+            text-align: right;
+            font-style: italic;
+        }
+
+        div.teacher_comment { 
+            color: orangered;
+        }
+
+        .graded_recent { 
+            background-color: forestgreen; 
+            font-weight:bold; 
+        }
+
+        .has_no_submissions { 
+            background-color: lightgray; 
+        }
+
+        .is_late { 
+           background-color: red;
+           font-weight:bold;
+        }
+
         .recent_comment { 
             background-color: yellow;
         }
 
+        .submitted { 
+            background-color: lightgreen; 
+            font-weight:bold;
+        }
+
+        .unsubmitted {
+            background-color: orange; 
+            font-weight:bold; 
+        }
+
+        .menu-item-icon-container{
+            text-align: right;
+        }
+
+        /* Report Details Table */
         table.key { 
-            max-width: 1024px;
-            margin: auto;
             font-size: small;
+            margin: auto;
+            max-width: 1024px;
         }
 
-        tr.key { 
-            max-height: 10px;
-        }
-        
-        th.key_title {
-            height: 30;
-            min-width: 100px;
+        th.main_header {
             background-color: #6e2b70;
+            border-top-left-radius: 19px;
+            border-top-right-radius: 19px;
             font-size: x-large;
-            border-style: solid;
-            border-color: #c84114;
+            padding: 5px;
         }
 
-        th.key {
-            height: 80;
+
+        th.sub_header {
+            background-color: #6e2b70;
+            color: white;
+            min-width: 100;
+            padding: 5px;
+        }
+
+        
+        th.main_footer {
+            background-color: #6e2b70;
+            padding: 0px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        table.key {
+            border-color: #c84114;
+            border-style: solid;
+        }
+
+        th.key_main_header {
+            background-color: #6e2b70;
+            color: white;
+            font-size: large;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        th.key_sub_header {
+            background-color: #6e2b70;
+            color: white;
+            font-size: large;
+        }
+
+        th.key_footer {
+            background-color: #6e2b70;
+            padding: 10px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        th.key, td.key{
+            height: 100;
             width: 150;
         }
 
-        td.key {
-            height: 100;
-            width: 100;
-            text-align: center;
-        }
-
-        td.report_details {
-            text-align: left;
-        }
-
         /* Tooltip Stuff */
-        .hide {
+        div.hide {
             display: none;
         }
 
-        .tooltip:hover .ttt_assignment, .tooltip:hover .ttt_status, .tooltip:hover .ttt_grade {
+        div.tooltip:hover span.ttt_assignment,
+        div.tooltip:hover span.ttt_status,
+        div.tooltip:hover span.ttt_grade,
+        div.tooltip:hover span.ttt_date {
             visibility: visible;
         }
 
-
-        .tooltip {
+        div.tooltip {
             position: relative;
-            /*
-            display: inline-block;
-            */
         }
 
-        .tooltip .ttt_assignment {
-            visibility: hidden;
-            width: 175px;
+        [class^="ttt_"] {
             background-color: white;
+            bottom: 110%;
+            box-shadow: 0px 0px 10px #c84114;
+            box-sizing:border-box;
             color: #c84114;
-            text-align: center;
+            font-weight: bold;
             padding: 10px;
-            border-radius: 200px;
-            font-weight: bold;
-            box-sizing:border-box;
-            box-shadow: 0px 0px 10px #c84114;
             position: absolute;
-            z-index: 1;
-            bottom: 110%;
-            left:	-30%;
-        }
-
-        .tooltip .ttt_status {
-            visibility: hidden;
-            width: 150px;
-            background-color: white;
-            color: #c84114;
             text-align: center;
-            padding: 10px 0;
-            border-radius: 200px;
-            font-weight: bold;
-            box-sizing:border-box;
-            box-shadow: 0px 0px 10px #c84114;
-            position: absolute;
-            z-index: 1;
-            bottom: 110%;
-            left: -13%;
-        }
-
-        .tooltip .ttt_grade {
             visibility: hidden;
-            width: 150px;
-            background-color: white;
-            color: #c84114;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 200px;
-            font-weight: bold;
-            box-sizing:border-box;
-            box-shadow: 0px 0px 10px #c84114;
-            position: absolute;
             z-index: 1;
-            bottom: 110%;
-            right: -45%;
         }
 
-        /* [Object] Modal
-        *  https://codepen.io/Idered/pen/vytkH
-        * =============================== */
+        div.tooltip span.ttt_assignment {
+            border-radius: 200px;
+            left:	-20%;
+            width: 175px;
+        }
+        div.tooltip span.ttt_date {
+            border-radius: 200px;
+            right: -35%;
+            width: 150px;
+        }
+
+        div.tooltip span.ttt_grade {
+            border-radius: 200px;
+            right: -70%;
+            width: 150px;
+        }
+
+        div.tooltip span.ttt_status {
+            border-radius: 200px;
+            left: -23%;
+            width: 150px;
+        }
+
+
+        label.mail_btn {
+           cursor: pointer;
+        }
+        
+        label.mail_btn:hover {
+            color: skyblue;
+        }
+
+        /* Description Modal *https://codepen.io/Idered/pen/vytkH* */
         .modal {
             opacity: 0;
             visibility: hidden;
@@ -237,6 +312,7 @@
             bottom: 0;
             left: 0;
             text-align: initial;
+            font-size: initial;
             background: rgba(0,0,0, .9);
             transition: opacity .25s ease;
             z-index: 1;
@@ -294,7 +370,7 @@
             position: absolute;
             width: 2px;
             height: 1.5em;
-            background: #ccc;
+            background: #c84114;
             display: block;
             transform: rotate(45deg);
             left: -20%;
@@ -304,7 +380,7 @@
 
         .modal__close:hover:after,
         .modal__close:hover:before {
-            background: #aaa;
+            background: #af2e03;
         }
 
         .modal__close:before {
@@ -345,12 +421,6 @@
             height: auto;
             float: left;
             margin: 0 1em 1em 0;
-        }
-
-        .report_metrics {
-            font-size: xx-small;
-            text-align: right;
-            font-style: italic;
         }
     </style>
 </head>
