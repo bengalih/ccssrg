@@ -62,6 +62,7 @@ def canvas_report():
                         font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
                         border: 20px solid #6e2b70;
                         border-radius: 20px;
+                        max-height: 999999px;
                     }
                     .notes {
                         color: yellow;
