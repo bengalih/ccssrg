@@ -1,11 +1,69 @@
-<HTML>
-<TITLE>CCSSRG Error</TITLE>
-<HEAD>
-</HEAD>
-<BODY>
-	<ul>
-		<li>Did you type your token correctly?</li>
-		<li>Did you Enter a valid Canvas URL?</li>
-	</ul>
+<html>
+    <head>
+        <title>
+            CCSSRG - Error
+        </title>
+		<style>
+            a {
+                color: #c84114;
+            }
+            h1, h2, h3 {
+                color: #6e2b70;
+                text-align: center;
+            }
+			li {
+				margin: 10;
+			}
+            .content {
+                max-width: 960px;
+                margin: auto;
+                background-color: white;
+                color: #2D3B45;
+                font-weight: bold;
+                padding-left: 20px;
+                padding-right: 20px;
+                font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+                border: 20px solid #6e2b70;
+                border-radius: 20px;
+            }
+        	.footer {
+                text-align: center;
+                color: #c84114;
+                font-style: italic;
+				font-weight: bold;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="content">
+		<h1>Oops!!!</h1>
+		<h2>Something went wrong...</h2>
+			<ul>
+				<li>Did you type your <a href="help.html#Access_Token">token</a> correctly?</li>
+				<li>Did you enter a valid  <a href="help.html#Canvas_URL">Canvas URL</a>?</li>
+			</ul>
+			<h3>What else could be wrong?</h3>
+				Well, lots of things - but the ones above are the most common for you to be getting this error message.<br>
+				As long as you have provided a valid Access Token and a proper Canvas URL things should work.<br>
+				However...
+				<ul>
+					<li>This tool is intended to generate a report for STUDENT accounts.  If you are running this against
+						another type of account (Observer/parent, instructor, admin) you may get errors or inconsistent results.
+					</li>
+					<li>This tool has a timeout limit.  If your report runs for a long time (~3-5 minutes) and you receive
+						this error, then you are most likely running up against this limit.  The problem is because there are
+						too many assignments in your Canvas courses (or simply too many courses!).  You may be able to get around
+						this error by running the report against only some courses using the
+						<a href="help.html#Course_List">Course List</a> option.
+					</li>
+				</ul>
+				<h3>Still Having Issues?</h3>
+				<ul>
+				<li>You can put in a problem report over at the <a target="_blank" href="https://github.com/bengalih/ccssrg/issues">
+					project's GitHub page.</a><br></li>
+				<li>You can also find the project's code there (written in Python) and try to run a local version on your own computer.</li>
+				</ul>	
+				<p class="footer"><a href="javascript:history.back()">Try Again?</a></p>
+		</div>
 
-<a href="https://ccssrg.pythonanywhere.com">Try Again?</a>
+	</body>

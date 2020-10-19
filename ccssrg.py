@@ -12,7 +12,7 @@ def main(**kwargs):
     try:
         kwargs['version']
     except:
-        version = "0.6b"
+        version = "0.6c"
     else:
         version = kwargs['version']
 
@@ -26,7 +26,7 @@ def main(**kwargs):
     else:
         flask_run=True
         token = kwargs['access_token']
-        canvas_base_url = kwargs['canvas_base_url']
+        canvas_base_url = "https://" + kwargs['canvas_base_url']
         selected_courses = kwargs['selected_courses']
        
     while True:

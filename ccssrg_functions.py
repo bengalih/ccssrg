@@ -120,7 +120,7 @@ def select_courses(user, courses, userprefs):
                 else:
                     if c not in selected_courses:
                         selected_courses.append(courses[c-1].id)
-    
+
     course_lists[user.name] = selected_courses
     userprefs.selected_courses = course_lists
     return selected_courses

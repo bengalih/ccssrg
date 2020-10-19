@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>
+            CCSSRG
+        </title>
+        <style>
+            body {
+                font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+                color: #2D3B45;
+            }
+            a {
+                color: #c84114;
+            }
+            h1 {
+                color: #6e2b70;
+                text-align: center;
+            }
+            h2 {
+               
+            }
+            .question {
+                max-width: 960px;
+                margin: auto;
+                background-color: white;
+                color: #2D3B45;
+                font-weight: bold;
+                padding-left: 20px;
+                padding-right: 20px;
+                font-size: large;
+                font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+                border: 20px solid #6e2b70;
+                border-radius: 20px;
+            }
+            .notes {
+                color: black;
+                background-color: yellow;
+                border: dotted;
+            }
+            .disclosures {
+                color: #c84114;
+                font-size: small;
+                font-style: italic;
+            }
+            .answer {
+                font-style: italic;
+            }
+            .header, .footer {
+                text-align: center;
+                color: #c84114;
+                font-size: small;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>F.A.Q.</h1>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p>
+        <a name="Access_Token"></a>
+        <div class="question">
+            <h2>Q: What is an Access Token?</html></h2>
+            <h3>
+                <span class="answer">
+                    A: An Access Token is a special password setup so external tools (like this one) can access your Canvas account.  
+                    Setting up an Access token takes only a minute.  
+                    You can find instructions
+                    <a target=_blank href="https://community.canvaslms.com/t5/Student-Guide/How-do-I-manage-API-access-tokens-as-a-student/ta-p/273">here.</a>
+                </span>
+            </h3>
+        </div>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p>
+        <a name="Canvas_URL"></a>
+        <div class="question">
+            <h2>Q: What is the Canvas URL?</html></h2>
+            <h3>
+                <span class="answer">
+                    A: The Canvas URL is the website you normally visit to access canvas.  It should usually start with some form of your institution's name
+                    and end with 'instructure.com'.
+                </span>
+            </h3>       
+        </div>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p> 
+        <a name="Course_List"></a>
+        <div class="question">
+            <h2>Q: What is the Course List?</html></h2>
+            <h3>
+                <span class="answer">
+                    A: Instead of running a report against all courses, you can enter in a comma separated list of course numbers.
+                    You can find a course number for a course by looking at the URL in Canvas while viewing a course.  It will look something like
+                    'https://mysite.instructure.com/courses/#####''.  The '#####' is the course number.  So, to run a report agains only courses 11111
+                    and 22222 you would enter: '11111, 22222'.
+                </span>
+            </h3>       
+        </div>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p> 
+        <a name="Download_Only"></a>
+        <div class="question">
+            <h2>Q: What is the Download Report Only option?</html></h2>
+            <h3>
+                <span class="answer">
+                    A: Normally, after the report runs it will display in your browser.  The 'Download Only' option will instead present
+                    the report as a file to download.  If you don't choose this option you can still choose to save the report as a file
+                    from the web browser's file menu.
+                </span>
+            </h3>       
+        </div>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p> 
+        <a name="More_Info"></a>
+        <div class="question">
+            <h2>Q: How does this all work???</html></h2>
+            <h3>
+                <span class="answer">
+                    A: The CCSSRG tool works by using a set of programming interfaces (APIs) that Canvas/Instruture makes available to all
+                    Canvas users.  This website uses those APIs with the Access Token you provide to pull your
+                    data from Canvas and present it in a consolidated format.  Your Access token is sent straight from the report page to
+                    Canvas over a secure (https) connection.  It is never stored, logged, or seen by any third party.  Once your report is
+                    generated, it will be archived on the server for diagnostic purposes. The server administrator can see only
+                    the report you ran, but not run additional reports, see, or change anything else in Canvas.
+                </span>
+            </h3>       
+        </div>
+        <p class="header"><a href="javascript:history.back()">back to report</a></p> 
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+    </body>

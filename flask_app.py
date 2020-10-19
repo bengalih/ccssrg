@@ -4,7 +4,7 @@ from ccssrg_functions import main
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-VERSION = "0.6b"
+VERSION = "0.6c"
 
 @app.route("/", methods=["GET", "POST"])
 
@@ -42,7 +42,7 @@ def canvas_report():
                 </title>
                 <style>
                     a {
-                        color: gold;
+                        color: #c84114;
                     }
                     h1 {
                         font-size: xx-large;
@@ -54,24 +54,40 @@ def canvas_report():
                         max-width: 960px;
                         margin: auto;
                         text-align: center;
-                        background-color: #2D3B45;
-                        color: white;
+                        background-color: white;
+                        color: #2D3B45;
                         font-weight: bold;
-                        padding: 100;
+                        padding: 25;
                         font-size: large;
+                        font-family: "Lato Extended","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+                        border: 20px solid #6e2b70;
+                        border-radius: 20px;
                     }
                     .notes {
-                        color: black;
-                        background-color: yellow;
-                        border: dotted;
+                        color: yellow;
+                        background-color: #6e2b70;
+                        font-style: italic;
+                        padding: 10;
+                        border-radius: 20px;
                     }
                     .disclosures {
-                        color: indianred;
+                        color: #c84114;
+                        font-size: small;
+                        font-style: italic;
+                    }
+                    .footer {
+                        text-align: center;
+                        color: #c84114;
+                        font-size: small;
+                        font-style: italic;
+                    }
+                    .italic{
+                        text-align: center;
                         font-size: small;
                         font-style: italic;
                     }
                 </style>
-            </head
+            </head>
             <body>
                 <div class="content">
                     <h1>Canvas Consolidated Student Submissions Report Generator</h1>
@@ -81,24 +97,39 @@ def canvas_report():
             '''
     html += '''
                     <form method="post" action=".">
-                        <p>Enter your
-                        <a target=_blank href="https://community.canvaslms.com/t5/Student-Guide/How-do-I-manage-API-access-tokens-as-a-student/ta-p/273">Access Token:</a></p>
+                        <a href="help.html#Access_Token">Access Token:</a><br>
+                        <span class="italic">(required)</span>
                         <p><input name="Access Token" size="80" /></p>
-                        <p>Enter Canvas URL (or use default):</p>
-                        <p><input name="Canvas URL" size="30" value="https://tulsaps.instructure.com" /></p>
-                        <p>Enter comma separated list of course numbers for report (leave empty for all courses):</p>
+                        <a href="help.html#Canvas_URL">Canvas URL:</a><br>
+                        <span class="italic">(change for your institution)</span>
+                        <p><input name="Canvas URL" size="30" value="tulsaps.instructure.com" /></p>
+                        <a href="help.html#Course_List">Course List:</a><br>
+                        <span class="italic">(leave empty for all courses)</span>
                         <p><input name="Course List" size="30" /></p>
                         <p><input name="Download" type="checkbox" id="Download" value="on" >
-                        <label for="Download">Download report only?</label></p>
+                        <label for="Download">
+                            <a href="help.html#Download_Only">
+                                Download report only
+                            </a>
+                        </label></p>
                         <p><input type="submit" value="RUN REPORT" /></p>
-                        <span class="notes">(Please wait up to a minute for a standard report...)</span><br><br>
+                        <span class="notes">(Please wait up to a minute for report generation.)</span><br><br>
                         <span class="disclosures">* By submitting your Access Token for a report you will be transmitting it through 3rd party web services to request Canvas data.<br>
                         Access Tokens are not captured or stored.  Generated reports however may be accessible by server administrators.<br>
-                        No access to Canvas is granted beyond what is required for the report to run upon submission.</span>
+                        No access to Canvas is granted beyond what is required for the report to run upon submission.
+                        <br>
+                        *<a href="help.html#More_Info">more info</a>
+                        </span>
                     </form>
                 </div>
+                <div class="footer"><a target="_blank" href="https://github.com/bengalih/ccssrg">ccssrg on github</a></div>
             </body>
         </html>
     '''
 
     return html
+
+@app.route("/help.html", methods=["GET"])
+
+def show_help():
+    return send_file("help.html")
