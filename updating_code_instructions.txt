@@ -3,3 +3,7 @@ Porting Python CCSSRG to Flask:
 - Put main() from ccssrg into bottom of ccssrg_functions
 - Put imports from ccssrg under imports in ccssrg_functions
 - Update version # in flask_app.py
+
+Flask Python 3.8 install on PythonAnywhere:
+- Install to webapp "prod"
+- pip3.8 install --user canvasapi
