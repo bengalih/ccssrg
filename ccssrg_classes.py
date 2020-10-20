@@ -3,7 +3,7 @@ class UserPrefs:
 
     def __init__(self):
         """Initialize name and age attributes"""
-        self.canvas_url = "https://tulsaps.instructure.com"
+        self.canvas_url = None
         self.name = None
         self.token = None
         self.selected_courses = {}
