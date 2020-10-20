@@ -4,7 +4,7 @@ from ccssrg_functions import main
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-VERSION = "0.6c"
+VERSION = "0.6d"
 
 @app.route("/", methods=["GET", "POST"])
 

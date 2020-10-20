@@ -7,11 +7,11 @@ def prompt_creds(userprefs):
     while token == "":
         token = input("Please enter Canvas student token ('q' to quit):")
     
-    if token == 'q':
-        quit()
-    else:
-        userprefs.name = None
-        userprefs.token = token
+        if token == 'q':
+            quit()
+        else:
+            userprefs.name = None
+            userprefs.token = token
 
 def access_prefs(userprefs):
     ''' Get saved user preferences/credentials from file '''
@@ -37,6 +37,7 @@ def write_prefs_file(userprefs):
         json.dump(vars(userprefs), f)
 
 def select_observees(observees):
+    ''' Unused '''
     user_list = []
     choice_list = list(range(1,len(list(observees))+1))
     observee_list = dict(zip(choice_list,observees))
@@ -80,6 +81,7 @@ def select_courses(user, courses, userprefs):
             selected_courses = course_lists.pop(user.name)
     except:
         selected_courses = []
+        course_lists = {}
     else:
         pass
 
@@ -371,13 +373,13 @@ def write_course_headers(obj_report, course):
     grades_url = course.tabs[0]['full_url']
     x = re.search(".*\/courses\/[0-9]*", grades_url)
     grades_url = x.group() + "/grades/"
-    # if course.enrollments['computed_current_score']:
-    # print(course.enrollments)
-    # quit()
-    if course.enrollments[0]['computed_current_score']:
-        course_score = f"({course.enrollments[0]['computed_current_score']}%)"
-    else:
+
+    try:
+        course.enrollments[0]['computed_current_score']
+    except:
         course_score = ""
+    else:
+        course_score = f"({course.enrollments[0]['computed_current_score']}%)"
 
     html = f"""
             <table>
